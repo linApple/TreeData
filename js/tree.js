@@ -24,6 +24,21 @@
         }
     }
 
+    function getTreeHeight(node) {
+        function fc(node, height) {
+            if (typeof node == "undefined") {
+                return height - 1;
+            }
+            if (node.left == defaultSet.node && node.right == defaultSet.node) {
+                return height;
+            }
+            var leftHeight = fc(node.left, height+1);
+            var rightHeight = fc(node.right, height+1);
+            return leftHeight > rightHeight ? leftHeight : rightHeight;
+        }
+        return fc(node,1);
+    }
+
     /*****生成二叉查找树*****/
     function createBinarySearTree(data, root) {
         var r = new Node(data[root]);
@@ -54,7 +69,8 @@
 
     window.treeCreator = {
         binarySear: createBinarySearTree,
-        writeTree2:writeTree2
+        writeTree2: writeTree2,
+        getTreeHeight:getTreeHeight
     };
 
 }(window, jQuery))

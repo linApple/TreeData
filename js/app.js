@@ -40,9 +40,9 @@
             }
             var arr = createRandomNums(num);
             var node = treeCreator.binarySear(arr, 0);
-            treeCreator.writeTree2(node);
-
-
+            window.node=node;
+            var graphy = new TreeGraphy(node, 100, 100, treeCreator.getTreeHeight(node));
+            graphy.start();
         });
 
     });
